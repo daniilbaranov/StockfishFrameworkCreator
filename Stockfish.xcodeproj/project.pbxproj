@@ -11,18 +11,46 @@
 		9604AB6827B3AD1D00C37343 /* stockfishEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9604AB6627B3AD1D00C37343 /* stockfishEngine.cpp */; };
 		9604AB6927B3AD1D00C37343 /* stockfishEngine.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 9604AB6727B3AD1D00C37343 /* stockfishEngine.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		9604AB7127B3ADBE00C37343 /* stockfishEngine.cpp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9604AB6627B3AD1D00C37343 /* stockfishEngine.cpp */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		964EBDD527BE60F50056F187 /* endgame.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDCC27BE60F50056F187 /* endgame.h */; };
+		964EBDD627BE60F50056F187 /* benchmark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDCD27BE60F50056F187 /* benchmark.cpp */; };
+		964EBDD727BE60F50056F187 /* endgame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDCE27BE60F50056F187 /* endgame.cpp */; };
+		964EBDD827BE60F50056F187 /* bitboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDCF27BE60F50056F187 /* bitboard.h */; };
+		964EBDD927BE60F50056F187 /* bitbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDD027BE60F50056F187 /* bitbase.cpp */; };
+		964EBDDA27BE60F50056F187 /* evaluate.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDD127BE60F50056F187 /* evaluate.h */; };
+		964EBDDB27BE60F50056F187 /* bitboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDD227BE60F50056F187 /* bitboard.cpp */; };
+		964EBDDC27BE60F50056F187 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDD327BE60F50056F187 /* main.cpp */; };
+		964EBDDD27BE60F50056F187 /* evaluate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDD427BE60F50056F187 /* evaluate.cpp */; };
+		964EBDFB27BE61070056F187 /* pawns.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDDE27BE61060056F187 /* pawns.h */; };
+		964EBDFC27BE61070056F187 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDDF27BE61060056F187 /* types.h */; };
+		964EBDFD27BE61070056F187 /* psqt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDE027BE61060056F187 /* psqt.cpp */; };
+		964EBDFE27BE61070056F187 /* misc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDE127BE61060056F187 /* misc.cpp */; };
+		964EBDFF27BE61070056F187 /* ucioption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDE227BE61060056F187 /* ucioption.cpp */; };
+		964EBE0027BE61070056F187 /* uci.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDE327BE61060056F187 /* uci.cpp */; };
+		964EBE0127BE61070056F187 /* movegen.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDE427BE61060056F187 /* movegen.h */; };
+		964EBE0227BE61070056F187 /* material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDE527BE61060056F187 /* material.cpp */; };
+		964EBE0327BE61070056F187 /* movepick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDE627BE61060056F187 /* movepick.cpp */; };
+		964EBE0427BE61070056F187 /* position.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDE727BE61060056F187 /* position.h */; };
+		964EBE0527BE61070056F187 /* search.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDE827BE61060056F187 /* search.h */; };
+		964EBE0627BE61070056F187 /* position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDE927BE61070056F187 /* position.cpp */; };
+		964EBE0727BE61070056F187 /* thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDEA27BE61070056F187 /* thread.cpp */; };
+		964EBE0827BE61070056F187 /* search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDEB27BE61070056F187 /* search.cpp */; };
+		964EBE0927BE61070056F187 /* timeman.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDEC27BE61070056F187 /* timeman.h */; };
+		964EBE0A27BE61070056F187 /* uci.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDED27BE61070056F187 /* uci.h */; };
+		964EBE0B27BE61070056F187 /* pawns.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDEE27BE61070056F187 /* pawns.cpp */; };
+		964EBE0C27BE61070056F187 /* tt.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDEF27BE61070056F187 /* tt.h */; };
+		964EBE0D27BE61070056F187 /* tbprobe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDF127BE61070056F187 /* tbprobe.cpp */; };
+		964EBE0E27BE61070056F187 /* tbprobe.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDF227BE61070056F187 /* tbprobe.h */; };
+		964EBE0F27BE61070056F187 /* misc.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDF327BE61070056F187 /* misc.h */; };
+		964EBE1027BE61070056F187 /* tt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDF427BE61070056F187 /* tt.cpp */; };
+		964EBE1127BE61070056F187 /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDF527BE61070056F187 /* thread.h */; };
+		964EBE1227BE61070056F187 /* movepick.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDF627BE61070056F187 /* movepick.h */; };
+		964EBE1327BE61070056F187 /* timeman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDF727BE61070056F187 /* timeman.cpp */; };
+		964EBE1427BE61070056F187 /* movegen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDF827BE61070056F187 /* movegen.cpp */; };
+		964EBE1527BE61070056F187 /* material.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDF927BE61070056F187 /* material.h */; };
+		964EBE1627BE61070056F187 /* thread_win32_osx.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDFA27BE61070056F187 /* thread_win32_osx.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9604AB6D27B3AD9700C37343 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9604AB7027B3ADAB00C37343 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -40,39 +68,49 @@
 		9604AB5F27B3AD0200C37343 /* Stockfish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stockfish.h; sourceTree = "<group>"; };
 		9604AB6627B3AD1D00C37343 /* stockfishEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stockfishEngine.cpp; sourceTree = "<group>"; };
 		9604AB6727B3AD1D00C37343 /* stockfishEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = stockfishEngine.hpp; sourceTree = "<group>"; };
-		9604AB6B27B3AD6200C37343 /* stockfish-ios-arm64.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "stockfish-ios-arm64.dylib"; path = "../stockfish-ios-arm64.dylib"; sourceTree = "<group>"; };
-		9604AB7227B3AE0700C37343 /* stockfish-simulator.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "stockfish-simulator.dylib"; path = "../stockfish-simulator.dylib"; sourceTree = "<group>"; };
-		9604AB7827B3AE4700C37343 /* stockfish-catalyst.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "stockfish-catalyst.dylib"; path = "../stockfish-catalyst.dylib"; sourceTree = "<group>"; };
-		9604AB7F27B3B25600C37343 /* stockfish-catalyst.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "stockfish-catalyst.dylib"; sourceTree = "<group>"; };
-		9604AB8027B3B25600C37343 /* stockfish-catalyst-x86_64.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "stockfish-catalyst-x86_64.dylib"; sourceTree = "<group>"; };
-		9604AB8127B3B25600C37343 /* stockfish-simulator-arm64.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "stockfish-simulator-arm64.dylib"; sourceTree = "<group>"; };
-		9604AB8227B3B25600C37343 /* stockfish-catalyst-arm64.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "stockfish-catalyst-arm64.dylib"; sourceTree = "<group>"; };
-		9604AB8327B3B25600C37343 /* stockfish-simulator-x86_64.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "stockfish-simulator-x86_64.dylib"; sourceTree = "<group>"; };
-		9604AB8427B3B25600C37343 /* stockfish-simulator.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "stockfish-simulator.dylib"; sourceTree = "<group>"; };
-		9604AB8527B3B25600C37343 /* stockfish-ios-arm64.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "stockfish-ios-arm64.dylib"; sourceTree = "<group>"; };
+		964EBDCC27BE60F50056F187 /* endgame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = endgame.h; sourceTree = "<group>"; };
+		964EBDCD27BE60F50056F187 /* benchmark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = benchmark.cpp; sourceTree = "<group>"; };
+		964EBDCE27BE60F50056F187 /* endgame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = endgame.cpp; sourceTree = "<group>"; };
+		964EBDCF27BE60F50056F187 /* bitboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitboard.h; sourceTree = "<group>"; };
+		964EBDD027BE60F50056F187 /* bitbase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bitbase.cpp; sourceTree = "<group>"; };
+		964EBDD127BE60F50056F187 /* evaluate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = evaluate.h; sourceTree = "<group>"; };
+		964EBDD227BE60F50056F187 /* bitboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bitboard.cpp; sourceTree = "<group>"; };
+		964EBDD327BE60F50056F187 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		964EBDD427BE60F50056F187 /* evaluate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = evaluate.cpp; sourceTree = "<group>"; };
+		964EBDDE27BE61060056F187 /* pawns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pawns.h; sourceTree = "<group>"; };
+		964EBDDF27BE61060056F187 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		964EBDE027BE61060056F187 /* psqt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = psqt.cpp; sourceTree = "<group>"; };
+		964EBDE127BE61060056F187 /* misc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = misc.cpp; sourceTree = "<group>"; };
+		964EBDE227BE61060056F187 /* ucioption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ucioption.cpp; sourceTree = "<group>"; };
+		964EBDE327BE61060056F187 /* uci.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uci.cpp; sourceTree = "<group>"; };
+		964EBDE427BE61060056F187 /* movegen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = movegen.h; sourceTree = "<group>"; };
+		964EBDE527BE61060056F187 /* material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = material.cpp; sourceTree = "<group>"; };
+		964EBDE627BE61060056F187 /* movepick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = movepick.cpp; sourceTree = "<group>"; };
+		964EBDE727BE61060056F187 /* position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = position.h; sourceTree = "<group>"; };
+		964EBDE827BE61060056F187 /* search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = search.h; sourceTree = "<group>"; };
+		964EBDE927BE61070056F187 /* position.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = position.cpp; sourceTree = "<group>"; };
+		964EBDEA27BE61070056F187 /* thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thread.cpp; sourceTree = "<group>"; };
+		964EBDEB27BE61070056F187 /* search.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = search.cpp; sourceTree = "<group>"; };
+		964EBDEC27BE61070056F187 /* timeman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timeman.h; sourceTree = "<group>"; };
+		964EBDED27BE61070056F187 /* uci.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uci.h; sourceTree = "<group>"; };
+		964EBDEE27BE61070056F187 /* pawns.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pawns.cpp; sourceTree = "<group>"; };
+		964EBDEF27BE61070056F187 /* tt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tt.h; sourceTree = "<group>"; };
+		964EBDF127BE61070056F187 /* tbprobe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tbprobe.cpp; sourceTree = "<group>"; };
+		964EBDF227BE61070056F187 /* tbprobe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tbprobe.h; sourceTree = "<group>"; };
+		964EBDF327BE61070056F187 /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misc.h; sourceTree = "<group>"; };
+		964EBDF427BE61070056F187 /* tt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tt.cpp; sourceTree = "<group>"; };
+		964EBDF527BE61070056F187 /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread.h; sourceTree = "<group>"; };
+		964EBDF627BE61070056F187 /* movepick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = movepick.h; sourceTree = "<group>"; };
+		964EBDF727BE61070056F187 /* timeman.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timeman.cpp; sourceTree = "<group>"; };
+		964EBDF827BE61070056F187 /* movegen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = movegen.cpp; sourceTree = "<group>"; };
+		964EBDF927BE61070056F187 /* material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = material.h; sourceTree = "<group>"; };
+		964EBDFA27BE61070056F187 /* thread_win32_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread_win32_osx.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		9604AB5927B3AD0200C37343 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		9604AB5227B3AD0200C37343 = {
 			isa = PBXGroup;
 			children = (
-				9604AB8227B3B25600C37343 /* stockfish-catalyst-arm64.dylib */,
-				9604AB8027B3B25600C37343 /* stockfish-catalyst-x86_64.dylib */,
-				9604AB7F27B3B25600C37343 /* stockfish-catalyst.dylib */,
-				9604AB8527B3B25600C37343 /* stockfish-ios-arm64.dylib */,
-				9604AB8127B3B25600C37343 /* stockfish-simulator-arm64.dylib */,
-				9604AB8327B3B25600C37343 /* stockfish-simulator-x86_64.dylib */,
-				9604AB8427B3B25600C37343 /* stockfish-simulator.dylib */,
 				9604AB5E27B3AD0200C37343 /* Stockfish */,
 				9604AB5D27B3AD0200C37343 /* Products */,
 				9604AB6A27B3AD6200C37343 /* Frameworks */,
@@ -91,8 +129,44 @@
 			isa = PBXGroup;
 			children = (
 				9604AB5F27B3AD0200C37343 /* Stockfish.h */,
+				964EBDCD27BE60F50056F187 /* benchmark.cpp */,
+				964EBDD027BE60F50056F187 /* bitbase.cpp */,
+				964EBDD227BE60F50056F187 /* bitboard.cpp */,
+				964EBDCF27BE60F50056F187 /* bitboard.h */,
+				964EBDCE27BE60F50056F187 /* endgame.cpp */,
+				964EBDCC27BE60F50056F187 /* endgame.h */,
+				964EBDD427BE60F50056F187 /* evaluate.cpp */,
+				964EBDD127BE60F50056F187 /* evaluate.h */,
+				964EBDD327BE60F50056F187 /* main.cpp */,
 				9604AB6627B3AD1D00C37343 /* stockfishEngine.cpp */,
 				9604AB6727B3AD1D00C37343 /* stockfishEngine.hpp */,
+				964EBDE527BE61060056F187 /* material.cpp */,
+				964EBDF927BE61070056F187 /* material.h */,
+				964EBDE127BE61060056F187 /* misc.cpp */,
+				964EBDF327BE61070056F187 /* misc.h */,
+				964EBDF827BE61070056F187 /* movegen.cpp */,
+				964EBDE427BE61060056F187 /* movegen.h */,
+				964EBDE627BE61060056F187 /* movepick.cpp */,
+				964EBDF627BE61070056F187 /* movepick.h */,
+				964EBDEE27BE61070056F187 /* pawns.cpp */,
+				964EBDDE27BE61060056F187 /* pawns.h */,
+				964EBDE927BE61070056F187 /* position.cpp */,
+				964EBDE727BE61060056F187 /* position.h */,
+				964EBDE027BE61060056F187 /* psqt.cpp */,
+				964EBDEB27BE61070056F187 /* search.cpp */,
+				964EBDE827BE61060056F187 /* search.h */,
+				964EBDF027BE61070056F187 /* syzygy */,
+				964EBDFA27BE61070056F187 /* thread_win32_osx.h */,
+				964EBDEA27BE61070056F187 /* thread.cpp */,
+				964EBDF527BE61070056F187 /* thread.h */,
+				964EBDF727BE61070056F187 /* timeman.cpp */,
+				964EBDEC27BE61070056F187 /* timeman.h */,
+				964EBDF427BE61070056F187 /* tt.cpp */,
+				964EBDEF27BE61070056F187 /* tt.h */,
+				964EBDDF27BE61060056F187 /* types.h */,
+				964EBDE327BE61060056F187 /* uci.cpp */,
+				964EBDED27BE61070056F187 /* uci.h */,
+				964EBDE227BE61060056F187 /* ucioption.cpp */,
 			);
 			path = Stockfish;
 			sourceTree = "<group>";
@@ -100,11 +174,17 @@
 		9604AB6A27B3AD6200C37343 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9604AB7827B3AE4700C37343 /* stockfish-catalyst.dylib */,
-				9604AB7227B3AE0700C37343 /* stockfish-simulator.dylib */,
-				9604AB6B27B3AD6200C37343 /* stockfish-ios-arm64.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		964EBDF027BE61070056F187 /* syzygy */ = {
+			isa = PBXGroup;
+			children = (
+				964EBDF127BE61070056F187 /* tbprobe.cpp */,
+				964EBDF227BE61070056F187 /* tbprobe.h */,
+			);
+			path = syzygy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -114,8 +194,25 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				964EBE0A27BE61070056F187 /* uci.h in Headers */,
+				964EBE0127BE61070056F187 /* movegen.h in Headers */,
+				964EBDFB27BE61070056F187 /* pawns.h in Headers */,
+				964EBE0E27BE61070056F187 /* tbprobe.h in Headers */,
+				964EBE0427BE61070056F187 /* position.h in Headers */,
+				964EBDDA27BE60F50056F187 /* evaluate.h in Headers */,
+				964EBE1127BE61070056F187 /* thread.h in Headers */,
+				964EBDFC27BE61070056F187 /* types.h in Headers */,
 				9604AB6027B3AD0200C37343 /* Stockfish.h in Headers */,
+				964EBE0527BE61070056F187 /* search.h in Headers */,
 				9604AB6927B3AD1D00C37343 /* stockfishEngine.hpp in Headers */,
+				964EBE1627BE61070056F187 /* thread_win32_osx.h in Headers */,
+				964EBE0F27BE61070056F187 /* misc.h in Headers */,
+				964EBE0C27BE61070056F187 /* tt.h in Headers */,
+				964EBE1527BE61070056F187 /* material.h in Headers */,
+				964EBE1227BE61070056F187 /* movepick.h in Headers */,
+				964EBE0927BE61070056F187 /* timeman.h in Headers */,
+				964EBDD527BE60F50056F187 /* endgame.h in Headers */,
+				964EBDD827BE60F50056F187 /* bitboard.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,9 +226,6 @@
 				9604AB5727B3AD0200C37343 /* Headers */,
 				9604AB5827B3AD0200C37343 /* Sources */,
 				9604AB7027B3ADAB00C37343 /* CopyFiles */,
-				9604AB6D27B3AD9700C37343 /* CopyFiles */,
-				9604AB5927B3AD0200C37343 /* Frameworks */,
-				9604AB5A27B3AD0200C37343 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -174,22 +268,32 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		9604AB5A27B3AD0200C37343 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		9604AB5827B3AD0200C37343 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				964EBE1427BE61070056F187 /* movegen.cpp in Sources */,
+				964EBE0227BE61070056F187 /* material.cpp in Sources */,
+				964EBE0827BE61070056F187 /* search.cpp in Sources */,
+				964EBE0027BE61070056F187 /* uci.cpp in Sources */,
+				964EBE1027BE61070056F187 /* tt.cpp in Sources */,
+				964EBE0B27BE61070056F187 /* pawns.cpp in Sources */,
+				964EBDFF27BE61070056F187 /* ucioption.cpp in Sources */,
+				964EBDD727BE60F50056F187 /* endgame.cpp in Sources */,
+				964EBE1327BE61070056F187 /* timeman.cpp in Sources */,
+				964EBE0727BE61070056F187 /* thread.cpp in Sources */,
+				964EBE0627BE61070056F187 /* position.cpp in Sources */,
+				964EBDFD27BE61070056F187 /* psqt.cpp in Sources */,
+				964EBDFE27BE61070056F187 /* misc.cpp in Sources */,
+				964EBDDD27BE60F50056F187 /* evaluate.cpp in Sources */,
 				9604AB6827B3AD1D00C37343 /* stockfishEngine.cpp in Sources */,
+				964EBE0D27BE61070056F187 /* tbprobe.cpp in Sources */,
+				964EBDDC27BE60F50056F187 /* main.cpp in Sources */,
+				964EBDD927BE60F50056F187 /* bitbase.cpp in Sources */,
+				964EBDD627BE60F50056F187 /* benchmark.cpp in Sources */,
+				964EBDDB27BE60F50056F187 /* bitboard.cpp in Sources */,
+				964EBE0327BE61070056F187 /* movepick.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -358,6 +463,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

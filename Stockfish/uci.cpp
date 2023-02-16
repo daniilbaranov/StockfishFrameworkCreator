@@ -286,10 +286,14 @@ int UCI::cmd(const std::string& cmd) {
     else if (token == "ponderhit")
       Threads.main()->ponder = false; // Switch to normal search
     
-    else if (token == "uci")
-      sync_cout << "id name " << engine_info(true)
-      << "\n"       << Options
-      << "\nuciok"  << sync_endl;
+    else if (token == "uci") {
+        std::stringstream buffer;
+        buffer << "id name " << engine_info(true)
+        << "\n"       << Options
+        << "\nuciok"  << sync_endl;
+        engine_message(buffer.str());
+        buffer.str().clear();
+    }
     
     else if (token == "setoption")  setoption(is);
     else if (token == "go")         go(pos, is, states);

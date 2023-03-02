@@ -35,6 +35,7 @@ namespace PSQT {
 
 static std::vector<std::string> searchMsg;
 static std::mutex searchMsgVecMutex;
+static bool isInit = false;
 
 void clearAllMessages() {
   if (!searchMsg.empty()) {
@@ -46,19 +47,27 @@ void clearAllMessages() {
 }
 
 void stockfish_initialize() {
-  clearAllMessages();
-  UCI::init(Options);
-  PSQT::init();
-  Bitboards::init();
-  Position::init();
-  Bitbases::init();
-  Endgames::init();
-  Threads.set(Options["Threads"]);
-  Search::clear(); // After threads are up
+    clearAllMessages();
+    if (!isInit) {
+        UCI::init(Options);
+        PSQT::init();
+        Bitboards::init();
+        Position::init();
+        Bitbases::init();
+        Endgames::init();
+        Threads.set(Options["Threads"]);
+        Search::clear(); // After threads are up
+    }
+    isInit = true;
 }
 
 void stockfish_cmd(const char *cmd) {
-    UCI::cmd(cmd);
+    if (isInit) {
+        UCI::cmd(cmd);
+        if (strcmp(cmd, "quit") == 0) {
+            isInit = false;
+        }
+    }
 }
 
 void engine_message(const std::string& str) {

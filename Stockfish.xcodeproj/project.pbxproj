@@ -48,6 +48,7 @@
 		964EBE1427BE61070056F187 /* movegen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 964EBDF827BE61070056F187 /* movegen.cpp */; };
 		964EBE1527BE61070056F187 /* material.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDF927BE61070056F187 /* material.h */; };
 		964EBE1627BE61070056F187 /* thread_win32_osx.h in Headers */ = {isa = PBXBuildFile; fileRef = 964EBDFA27BE61070056F187 /* thread_win32_osx.h */; };
+		96AE90CF2BE39C1B001EB80C /* PrivacyInfo.xcprivacy in CopyFiles */ = {isa = PBXBuildFile; fileRef = 96AE90CE2BE39BE1001EB80C /* PrivacyInfo.xcprivacy */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +58,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				96AE90CF2BE39C1B001EB80C /* PrivacyInfo.xcprivacy in CopyFiles */,
 				9604AB7127B3ADBE00C37343 /* stockfishEngine.cpp in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,14 +107,14 @@
 		964EBDF827BE61070056F187 /* movegen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = movegen.cpp; sourceTree = "<group>"; };
 		964EBDF927BE61070056F187 /* material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = material.h; sourceTree = "<group>"; };
 		964EBDFA27BE61070056F187 /* thread_win32_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread_win32_osx.h; sourceTree = "<group>"; };
-		96AE90C52BE39478001EB80C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		96AE90CE2BE39BE1001EB80C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		9604AB5227B3AD0200C37343 = {
 			isa = PBXGroup;
 			children = (
-				96AE90C52BE39478001EB80C /* PrivacyInfo.xcprivacy */,
+				96AE90CE2BE39BE1001EB80C /* PrivacyInfo.xcprivacy */,
 				9604AB5E27B3AD0200C37343 /* Stockfish */,
 				9604AB5D27B3AD0200C37343 /* Products */,
 				9604AB6A27B3AD6200C37343 /* Frameworks */,

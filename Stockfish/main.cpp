@@ -33,57 +33,21 @@ namespace PSQT {
   void init();
 }
 
-static std::vector<std::string> searchMsg;
-static std::mutex searchMsgVecMutex;
-static bool isInit = false;
+int main(int argc, char* argv[]) {
 
-void clearAllMessages() {
-  if (!searchMsg.empty()) {
-    std::lock_guard<std::mutex> lock(searchMsgVecMutex);
-    if (!searchMsg.empty()) {
-      searchMsg.clear();
-    }
-  }
-}
+  std::cout << engine_info() << std::endl;
 
-void stockfish_initialize() {
-    clearAllMessages();
-    if (!isInit) {
-        UCI::init(Options);
-        PSQT::init();
-        Bitboards::init();
-        Position::init();
-        Bitbases::init();
-        Endgames::init();
-        Threads.set(Options["Threads"]);
-        Search::clear(); // After threads are up
-    }
-    isInit = true;
-}
+  UCI::init(Options);
+  PSQT::init();
+  Bitboards::init();
+  Position::init();
+  Bitbases::init();
+  Endgames::init();
+  Threads.set(Options["Threads"]);
+  Search::clear(); // After threads are up
 
-void stockfish_cmd(const char *cmd) {
-    if (isInit) {
-        UCI::cmd(cmd);
-        if (strcmp(cmd, "quit") == 0) {
-            isInit = false;
-        }
-    }
-}
+  UCI::loop(argc, argv);
 
-void engine_message(const std::string& str) {
-  std::lock_guard<std::mutex> lock(searchMsgVecMutex);
-  searchMsg.push_back(str);
-}
-
-const char* getSearchMessage() {
-  if (!searchMsg.empty()) {
-    std::lock_guard<std::mutex> lock(searchMsgVecMutex);
-    if (!searchMsg.empty()) {
-      static std::string tmpString;
-      tmpString = searchMsg.front();
-      searchMsg.erase(searchMsg.begin());
-      return tmpString.c_str();
-    }
-  }
-  return nullptr;
+  Threads.set(0);
+  return 0;
 }

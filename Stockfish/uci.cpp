@@ -33,7 +33,6 @@
 #include "uci.h"
 #include "syzygy/tbprobe.h"
 
-extern void engine_message(const std::string& s);
 using namespace std;
 
 extern vector<string> setup_bench(const Position&, istream&);
@@ -48,7 +47,6 @@ namespace {
   // The function sets up the position described in the given FEN string ("fen")
   // or the starting position ("startpos") and then makes the moves given in the
   // following move list ("moves").
-  bool benchworking = false;
 
   void position(Position& pos, istringstream& is, StateListPtr& states) {
 
@@ -178,16 +176,10 @@ namespace {
 
     dbg_print(); // Just before exiting
 
-      auto s = "Total time (ms) : " + std::to_string(elapsed)
-      + "\nNodes searched  : " + std::to_string(nodes)
-      + "\nNodes/second    : " + std::to_string(1000 * nodes / elapsed);
-      engine_message(s);
-      
-      cerr << "\n===========================\n" << s << std::endl;
-      
-      s = "bench END";
-      std::cout << s << std::endl;
-      engine_message(s);
+    cerr << "\n==========================="
+         << "\nTotal time (ms) : " << elapsed
+         << "\nNodes searched  : " << nodes
+         << "\nNodes/second    : " << 1000 * nodes / elapsed << endl;
   }
 
 } // namespace
@@ -252,67 +244,6 @@ void UCI::loop(int argc, char* argv[]) {
           sync_cout << "Unknown command: " << cmd << sync_endl;
 
   } while (token != "quit" && argc == 1); // Command line args are one-shot
-}
-
-int UCI::cmd(const std::string& cmd) {
-  static Position pos;
-  static StateListPtr states(new std::deque<StateInfo>(1));
-  static bool first = true;
-  
-  if (first) {
-    first = false;
-    pos.set(StartFEN, false, &states->back(), Threads.main());
-  }
-  
-//  auto vec = splitString(cmd, '\n');
-//
-//  for(auto && s : vec) {
-    std::istringstream is(cmd);
-    
-    std::string token; // Avoid a stale if getline() returns empty or blank line
-    is >> std::skipws >> token;
-    
-    
-    if (    token == "quit"
-        ||  token == "stop") {
-      Threads.stop = true;
-      benchworking = false;
-    }
-    
-    // The GUI sends 'ponderhit' to tell us the user has played the expected move.
-    // So 'ponderhit' will be sent if we were told to ponder on the same move the
-    // user has played. We should continue searching but switch from pondering to
-    // normal search.
-    else if (token == "ponderhit")
-      Threads.main()->ponder = false; // Switch to normal search
-    
-    else if (token == "uci") {
-        std::stringstream buffer;
-        buffer << "id name " << engine_info(true)
-        << "\n"       << Options
-        << "\nuciok"  << sync_endl;
-        engine_message(buffer.str());
-        buffer.str().clear();
-    }
-    
-    else if (token == "setoption")  setoption(is);
-    else if (token == "go")         go(pos, is, states);
-    else if (token == "position")   position(pos, is, states);
-    else if (token == "ucinewgame") Search::clear();
-    else if (token == "isready")    sync_cout << "readyok" << sync_endl;
-    
-    // Additional custom non-UCI commands, mainly for debugging.
-    // Do not use these commands during a search!
-    else if (token == "flip")     pos.flip();
-    else if (token == "bench")    bench(pos, is, states);
-    else if (token == "d")        sync_cout << pos << sync_endl;
-    else if (token == "eval")     sync_cout << Eval::trace(pos) << sync_endl;
-    else if (token == "compiler") sync_cout << compiler_info() << sync_endl;
-    else
-      sync_cout << "Unknown command: " << cmd << sync_endl;
-//  }
-  
-  return 1;
 }
 
 

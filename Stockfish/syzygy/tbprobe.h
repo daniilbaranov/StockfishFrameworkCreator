@@ -1,7 +1,6 @@
 /*
   Stockfish, a UCI chess playing engine derived from Glaurung 2.1
-  Copyright (c) 2013 Ronald de Man
-  Copyright (C) 2016-2020 Marco Costalba, Lucas Braesch
+  Copyright (C) 2004-2023 The Stockfish developers (see AUTHORS file)
 
   Stockfish is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -24,7 +23,7 @@
 
 #include "../search.h"
 
-namespace Tablebases {
+namespace Stockfish::Tablebases {
 
 enum WDLScore {
     WDLLoss        = -2, // Loss
@@ -32,14 +31,12 @@ enum WDLScore {
     WDLDraw        =  0, // Draw
     WDLCursedWin   =  1, // Win, but draw under 50-move rule
     WDLWin         =  2, // Win
-
-    WDLScoreNone  = -1000
 };
 
 // Possible states after a probing operation
 enum ProbeState {
     FAIL              =  0, // Probe failed (missing file table)
-    OK                =  1, // Probe succesful
+    OK                =  1, // Probe successful
     CHANGE_STM        = -1, // DTZ should check the other side
     ZEROING_BEST_MOVE =  2  // Best move zeroes DTZ (capture or pawn move)
 };
@@ -74,6 +71,6 @@ inline std::ostream& operator<<(std::ostream& os, const ProbeState v) {
     return os;
 }
 
-}
+} // namespace Stockfish::Tablebases
 
 #endif

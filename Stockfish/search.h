@@ -1,8 +1,6 @@
 /*
   Stockfish, a UCI chess playing engine derived from Glaurung 2.1
-  Copyright (C) 2004-2008 Tord Romstad (Glaurung author)
-  Copyright (C) 2008-2015 Marco Costalba, Joona Kiiski, Tord Romstad
-  Copyright (C) 2015-2020 Marco Costalba, Joona Kiiski, Gary Linscott, Tord Romstad
+  Copyright (C) 2004-2023 The Stockfish developers (see AUTHORS file)
 
   Stockfish is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -27,12 +25,11 @@
 #include "movepick.h"
 #include "types.h"
 
+namespace Stockfish {
+
 class Position;
 
 namespace Search {
-
-/// Threshold used for countermoves based pruning
-constexpr int CounterMovePruneThreshold = 0;
 
 
 /// Stack struct keeps track of the information we need to remember from nodes
@@ -49,6 +46,11 @@ struct Stack {
   Value staticEval;
   int statScore;
   int moveCount;
+  bool inCheck;
+  bool ttPv;
+  bool ttHit;
+  int doubleExtensions;
+  int cutoffCnt;
 };
 
 
@@ -68,14 +70,17 @@ struct RootMove {
 
   Value score = -VALUE_INFINITE;
   Value previousScore = -VALUE_INFINITE;
+  Value averageScore = -VALUE_INFINITE;
+  Value uciScore = -VALUE_INFINITE;
+  bool scoreLowerbound = false;
+  bool scoreUpperbound = false;
   int selDepth = 0;
   int tbRank = 0;
-  int bestMoveCount = 0;
   Value tbScore;
   std::vector<Move> pv;
 };
 
-typedef std::vector<RootMove> RootMoves;
+using RootMoves = std::vector<RootMove>;
 
 
 /// LimitsType struct stores information sent by GUI about available time to
@@ -90,7 +95,7 @@ struct LimitsType {
   }
 
   bool use_time_management() const {
-    return !(mate | movetime | depth | nodes | perft | infinite);
+    return time[WHITE] || time[BLACK];
   }
 
   std::vector<Move> searchmoves;
@@ -105,5 +110,7 @@ void init();
 void clear();
 
 } // namespace Search
+
+} // namespace Stockfish
 
 #endif // #ifndef SEARCH_H_INCLUDED

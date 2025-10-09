@@ -30,24 +30,59 @@
 
 using namespace Stockfish;
 
-int main(int argc, char* argv[]) {
+static std::vector<std::string> searchMsg;
+static std::mutex searchMsgVecMutex;
+static bool isInit = false;
 
-  std::cout << engine_info() << std::endl;
+void clearAllMessages() {
+  if (!searchMsg.empty()) {
+    std::lock_guard<std::mutex> lock(searchMsgVecMutex);
+    if (!searchMsg.empty()) {
+      searchMsg.clear();
+    }
+  }
+}
 
-  CommandLine::init(argc, argv);
-  UCI::init(Options);
-  Tune::init();
-  PSQT::init();
-  Bitboards::init();
-  Position::init();
-  Bitbases::init();
-  Endgames::init();
-  Threads.set(size_t(Options["Threads"]));
-  Search::clear(); // After threads are up
-  Eval::NNUE::init();
+void stockfish_initialize() {
+    clearAllMessages();
+    if (!isInit) {
+        UCI::init(Options);
+        Tune::init();
+        PSQT::init();
+        Bitboards::init();
+        Position::init();
+        Bitbases::init();
+        Endgames::init();
+        Threads.set(size_t(Options["Threads"]));
+        Search::clear(); // After threads are up
+        Eval::NNUE::init();
+    }
+    isInit = true;
+}
 
-  UCI::loop(argc, argv);
+void stockfish_cmd(const char *cmd) {
+    if (isInit) {
+        UCI::cmd(cmd);
+        if (strcmp(cmd, "quit") == 0) {
+            isInit = false;
+        }
+    }
+}
 
-  Threads.set(0);
-  return 0;
+void engine_message(const std::string& str) {
+  std::lock_guard<std::mutex> lock(searchMsgVecMutex);
+  searchMsg.push_back(str);
+}
+
+const char* getSearchMessage() {
+  if (!searchMsg.empty()) {
+    std::lock_guard<std::mutex> lock(searchMsgVecMutex);
+    if (!searchMsg.empty()) {
+      static std::string tmpString;
+      tmpString = searchMsg.front();
+      searchMsg.erase(searchMsg.begin());
+      return tmpString.c_str();
+    }
+  }
+  return nullptr;
 }

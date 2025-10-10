@@ -44,11 +44,11 @@ namespace {
   // FEN string for the initial position in standard chess
   const char* StartFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
+
   // position() is called when the engine receives the "position" UCI command.
   // It sets up the position that is described in the given FEN string ("fen") or
   // the initial position ("startpos") and then makes the moves given in the following
   // move list ("moves").
-  bool benchworking = false;
 
   void position(Position& pos, istringstream& is, StateListPtr& states) {
 
@@ -331,7 +331,6 @@ int UCI::cmd(const std::string& cmd) {
     if (    token == "quit"
         ||  token == "stop") {
       Threads.stop = true;
-      benchworking = false;
     }
     
     // The GUI sends 'ponderhit' to tell us the user has played the expected move.
@@ -361,8 +360,16 @@ int UCI::cmd(const std::string& cmd) {
     else if (token == "flip")     pos.flip();
     else if (token == "bench")    bench(pos, is, states);
     else if (token == "d")        sync_cout << pos << sync_endl;
-    else if (token == "eval")     sync_cout << Eval::trace(pos) << sync_endl;
+    else if (token == "eval")     trace_eval(pos);
     else if (token == "compiler") sync_cout << compiler_info() << sync_endl;
+    else if (token == "export_net")
+    {
+        std::optional<std::string> filename;
+        std::string f;
+        if (is >> skipws >> f)
+            filename = f;
+        Eval::NNUE::save_eval(filename);
+    }
     else
       sync_cout << "Unknown command: " << cmd << sync_endl;
 //  }

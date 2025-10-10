@@ -57,6 +57,7 @@ void stockfish_initialize() {
         Search::clear(); // After threads are up
         Eval::NNUE::init();
     }
+    std::cout << engine_info() << std::endl;
     isInit = true;
 }
 

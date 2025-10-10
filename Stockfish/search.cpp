@@ -36,9 +36,9 @@
 #include "syzygy/tbprobe.h"
 #include "nnue/evaluate_nnue.h"
 
-namespace Stockfish {
-
 extern void engine_message(const std::string& s);
+
+namespace Stockfish {
 
 namespace Search {
 
@@ -190,7 +190,7 @@ void MainThread::search() {
   if (Limits.perft)
   {
       nodes = perft<true>(rootPos, Limits.perft);
-      engine_message("\nNodes searched: " + std::to_string(nodes));
+      engine_message("\nNodes searched: " + std::to_string(nodes) + "\n");
       return;
   }
 

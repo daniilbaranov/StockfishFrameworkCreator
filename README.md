@@ -12,6 +12,8 @@ version 3 or later. The license text is in [Copying.txt](Copying.txt), the
 authors of Stockfish are listed in [AUTHORS](AUTHORS).
 
 - Stockfish (`Stockfish/`): Copyright (C) 2004-2023 The Stockfish developers (see AUTHORS).
+- C interface (`Stockfish/stockfishEngine.cpp`, `Stockfish/stockfishEngine.hpp`):
+  Copyright (C) 2021 Daniil Baranov, GPL version 3 or later.
 - `Stockfish/incbin/`: incbin by Dale Weiler, public domain ([UNLICENCE](Stockfish/incbin/UNLICENCE)).
 - `nn-5af11540bbfe.nnue`: the default neural network of Stockfish 16, see [Neural network](#neural-network).
 

@@ -16,6 +16,13 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+  Modified on 2025-10-09 and 2025-10-10 for Stockfish.framework
+  (StockfishFrameworkCreator); see README.md, "Changes from Stockfish 16".
+  Search output ("info", "bestmove", perft results) goes to the message
+  queue through engine_message() instead of standard output.
+*/
+
 #include <algorithm>
 #include <cassert>
 #include <cmath>

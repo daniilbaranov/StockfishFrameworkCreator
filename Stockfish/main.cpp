@@ -16,6 +16,15 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+  Modified on 2025-10-09 and 2025-10-10 for Stockfish.framework
+  (StockfishFrameworkCreator); see README.md, "Changes from Stockfish 16".
+  main() is replaced by functions called from stockfishEngine.cpp:
+  stockfish_initialize() runs the startup code once, stockfish_cmd() passes
+  one command to UCI::cmd(), and engine output goes to a message queue
+  (engine_message(), getSearchMessage(), clearAllMessages()).
+*/
+
 #include <iostream>
 
 #include "bitboard.h"

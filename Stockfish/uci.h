@@ -16,6 +16,12 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+  Modified on 2025-10-09 for Stockfish.framework
+  (StockfishFrameworkCreator); see README.md, "Changes from Stockfish 16".
+  Added UCI::cmd().
+*/
+
 #ifndef UCI_H_INCLUDED
 #define UCI_H_INCLUDED
 

@@ -16,6 +16,14 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+  Modified on 2025-10-09 and 2025-10-10 for Stockfish.framework
+  (StockfishFrameworkCreator); see README.md, "Changes from Stockfish 16".
+  Added UCI::cmd(), which handles one command per call instead of the
+  UCI::loop() read loop. The "uci" reply and the "bench" results go to the
+  message queue; "bench" also prints "bench END".
+*/
+
 #include <cassert>
 #include <cmath>
 #include <iostream>

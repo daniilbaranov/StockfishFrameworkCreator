@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		96AE90CF2BE39C1B001EB80C /* PrivacyInfo.xcprivacy in CopyFiles */ = {isa = PBXBuildFile; fileRef = 96AE90CE2BE39BE1001EB80C /* PrivacyInfo.xcprivacy */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		96E4C1A12FA5000100A1B2C3 /* Copying.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 96E4C1A02FA5000100A1B2C3 /* Copying.txt */; };
+		96E4C1A32FA5000100A1B2C3 /* AUTHORS in CopyFiles */ = {isa = PBXBuildFile; fileRef = 96E4C1A22FA5000100A1B2C3 /* AUTHORS */; };
 		96D229592E97D58400981542 /* stockfishEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96D2294A2E97D58400981542 /* stockfishEngine.cpp */; };
 		96D2295A2E97D58400981542 /* misc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96D2293B2E97D58400981542 /* misc.cpp */; };
 		96D2295B2E97D58400981542 /* pawns.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 96D229412E97D58400981542 /* pawns.cpp */; };
@@ -35,7 +37,7 @@
 		96D229712E97D58400981542 /* material.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D229382E97D58400981542 /* material.h */; };
 		96D229722E97D58400981542 /* bitboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D229312E97D58400981542 /* bitboard.h */; };
 		96D229732E97D58400981542 /* nnue_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D229282E97D58400981542 /* nnue_common.h */; };
-		96D229742E97D58400981542 /* Stockfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D229482E97D58400981542 /* Stockfish.h */; };
+		96D229742E97D58400981542 /* Stockfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D229482E97D58400981542 /* Stockfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96D229752E97D58400981542 /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D2294B2E97D58400981542 /* thread.h */; };
 		96D229762E97D58400981542 /* position.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D229422E97D58400981542 /* position.h */; };
 		96D229772E97D58400981542 /* evaluate_nnue.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D229242E97D58400981542 /* evaluate_nnue.h */; };
@@ -56,7 +58,7 @@
 		96D229862E97D58400981542 /* nnue_architecture.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D229272E97D58400981542 /* nnue_architecture.h */; };
 		96D229872E97D58400981542 /* endgame.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D229332E97D58400981542 /* endgame.h */; };
 		96D229882E97D58400981542 /* thread_win32_osx.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D2294D2E97D58400981542 /* thread_win32_osx.h */; };
-		96D229892E97D58400981542 /* stockfishEngine.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 96D229492E97D58400981542 /* stockfishEngine.hpp */; };
+		96D229892E97D58400981542 /* stockfishEngine.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 96D229492E97D58400981542 /* stockfishEngine.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		96D2298A2E97D58400981542 /* tbprobe.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D2292B2E97D58400981542 /* tbprobe.h */; };
 		96D2298B2E97D58400981542 /* pawns.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D229402E97D58400981542 /* pawns.h */; };
 		96D2298C2E97D58400981542 /* nnue_accumulator.h in Headers */ = {isa = PBXBuildFile; fileRef = 96D229262E97D58400981542 /* nnue_accumulator.h */; };
@@ -76,6 +78,8 @@
 			dstSubfolderSpec = 7;
 			files = (
 				96AE90CF2BE39C1B001EB80C /* PrivacyInfo.xcprivacy in CopyFiles */,
+				96E4C1A12FA5000100A1B2C3 /* Copying.txt in CopyFiles */,
+				96E4C1A32FA5000100A1B2C3 /* AUTHORS in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +88,8 @@
 /* Begin PBXFileReference section */
 		9604AB5C27B3AD0200C37343 /* Stockfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stockfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96AE90CE2BE39BE1001EB80C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		96E4C1A02FA5000100A1B2C3 /* Copying.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Copying.txt; sourceTree = "<group>"; };
+		96E4C1A22FA5000100A1B2C3 /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
 		96D229182E97D58400981542 /* incbin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = incbin.h; sourceTree = "<group>"; };
 		96D229192E97D58400981542 /* UNLICENCE */ = {isa = PBXFileReference; lastKnownFileType = text; path = UNLICENCE; sourceTree = "<group>"; };
 		96D2291B2E97D58400981542 /* half_ka_v2_hm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = half_ka_v2_hm.h; sourceTree = "<group>"; };
@@ -149,6 +155,8 @@
 		9604AB5227B3AD0200C37343 = {
 			isa = PBXGroup;
 			children = (
+				96E4C1A02FA5000100A1B2C3 /* Copying.txt */,
+				96E4C1A22FA5000100A1B2C3 /* AUTHORS */,
 				96AE90CE2BE39BE1001EB80C /* PrivacyInfo.xcprivacy */,
 				96D229582E97D58400981542 /* Stockfish */,
 				9604AB5D27B3AD0200C37343 /* Products */,
@@ -545,7 +553,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Stockfish 16, modified. Copyright (C) 2004-2023 The Stockfish developers (see AUTHORS). License: GNU GPL v3 (see Copying.txt).";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -583,7 +591,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Stockfish 16, modified. Copyright (C) 2004-2023 The Stockfish developers (see AUTHORS). License: GNU GPL v3 (see Copying.txt).";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

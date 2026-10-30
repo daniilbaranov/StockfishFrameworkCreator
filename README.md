@@ -20,7 +20,7 @@ authors of Stockfish are listed in [AUTHORS](AUTHORS).
 The framework carries `Copying.txt` and `AUTHORS` inside its bundle, and its
 `Info.plist` has the copyright notice (`NSHumanReadableCopyright`).
 
-## Source of shipped builds
+## Tagged builds
 
 Every framework build that ships in an app is tagged; the tag is the complete
 source of that build.
@@ -28,11 +28,15 @@ source of that build.
 | Tag | Commit | Engine | Built |
 |---|---|---|---|
 | `sf_16-ck.1` | `58e4ab0` | Stockfish 16 | 2025-10 |
+| `sf_16-ck.2` | `a5e19c2` | Stockfish 16 | 2026-10 |
 
 `sf_16-ck.1` was built before the license files and notices were added; they
 do not change the engine code. That build also contains the public headers
 `Stockfish.h` and `stockfishEngine.hpp` of the same commit: the project at that
 commit does not mark them public, later commits do.
+
+`sf_16-ck.2` has the same engine code as `sf_16-ck.1`, with `Copying.txt`,
+`AUTHORS` and the copyright notice inside the framework.
 
 Builds from 18 February 2022 to May 2024 were based on Stockfish 11. Their
 sources are in the history of this repository, commits `9df9aaf` to `be024fd`.

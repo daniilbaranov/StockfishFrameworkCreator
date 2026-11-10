@@ -16,9 +16,21 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+  Modified on 2026-11-09 for Stockfish.framework
+  (StockfishFrameworkCreator); see README.md, "Changes from Stockfish 19".
+  main() is replaced by functions called from stockfishEngine.cpp:
+  stockfish_initialize() creates the engine unless it is already running,
+  stockfish_cmd() passes one command to UCIEngine::execute(), and the engine
+  output goes to a message queue (engine_message(), getSearchMessage(),
+  clearAllMessages()).
+*/
+
+#include <deque>
 #include <iostream>
 #include <memory>
-#include <utility>
+#include <mutex>
+#include <string>
 
 #include "attacks.h"
 #include "misc.h"
@@ -28,34 +40,54 @@
 
 using namespace Stockfish;
 
-#ifdef UNIVERSAL_BINARY
-namespace Stockfish {
+static std::deque<std::string>    searchMsg;
+static std::mutex                 searchMsgMutex;
+static std::unique_ptr<UCIEngine> uci;
+static bool                       isInit = false;
 
-int main(int argc, char* argv[]);  // silence 'no previous declaration'
-
-__attribute__((used)) // keep main alive
-#endif
-
-int main(int argc, char* argv[]) {
-    std::cout << engine_info() << std::endl;
-
-    Attacks::init();
-    Position::init();
-
-    auto cli = CommandLine(argc, argv);
-    auto uci = std::make_unique<UCIEngine>(std::move(cli));
-
-    Tune::init(uci->engine_options());
-
-    uci->loop();
-
-    return 0;
+void engine_message(const std::string& str) {
+    std::lock_guard<std::mutex> lock(searchMsgMutex);
+    searchMsg.push_back(str);
 }
 
-#ifdef UNIVERSAL_BINARY
-}  // namespace Stockfish
+void clearAllMessages() {
+    std::lock_guard<std::mutex> lock(searchMsgMutex);
+    searchMsg.clear();
+}
 
-    #ifdef UNIVERSAL_NEEDS_MAIN_SHIM
-int main(int argc, char* argv[]) { return Stockfish::main(argc, argv); }
-    #endif
-#endif
+// The oldest message, or nullptr. The string is valid until the next call.
+const char* getSearchMessage() {
+    static std::string          message;
+    std::lock_guard<std::mutex> lock(searchMsgMutex);
+    if (searchMsg.empty())
+        return nullptr;
+    message = std::move(searchMsg.front());
+    searchMsg.pop_front();
+    return message.c_str();
+}
+
+void stockfish_initialize() {
+    clearAllMessages();
+    if (!isInit)
+    {
+        static bool tablesReady = false;
+        if (!tablesReady)
+        {
+            set_sync_output(engine_message);
+            Attacks::init();
+            Position::init();
+            tablesReady = true;
+        }
+
+        uci.reset();  // the engine stopped by "quit": waits for its search to finish
+        uci = std::make_unique<UCIEngine>(CommandLine(0, nullptr));
+        Tune::init(uci->engine_options());
+        isInit = true;
+    }
+    std::cout << engine_info() << std::endl;
+}
+
+void stockfish_cmd(const char* cmd) {
+    if (isInit && !uci->execute(cmd))
+        isInit = false;  // after "quit" the engine needs stockfish_initialize() again
+}

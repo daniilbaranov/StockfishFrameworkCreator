@@ -16,6 +16,12 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+  Modified on 2026-11-09 for Stockfish.framework
+  (StockfishFrameworkCreator); see README.md, "Changes from Stockfish 19".
+  Added UCIEngine::execute(), which handles one command per call.
+*/
+
 #ifndef UCI_H_INCLUDED
 #define UCI_H_INCLUDED
 
@@ -42,6 +48,8 @@ class UCIEngine {
     UCIEngine(CommandLine cli);
 
     void loop();
+    // Handles one command; returns false after "quit".
+    bool execute(const std::string& cmd);
 
     static int         to_cp(Value v, const Position& pos);
     static std::string format_score(const Score& s);

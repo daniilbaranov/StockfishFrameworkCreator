@@ -16,6 +16,14 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+  Modified on 2026-11-09 for Stockfish.framework
+  (StockfishFrameworkCreator); see README.md, "Changes from Stockfish 19".
+  No system-wide shared memory on iOS, iPadOS and Mac Catalyst: the engine
+  runs inside an app, so the network is kept in the app's own memory (the
+  fallback below) instead of POSIX shared memory with files in /tmp.
+*/
+
 #ifndef SHM_H_INCLUDED
 #define SHM_H_INCLUDED
 
@@ -36,8 +44,12 @@
 #include <utility>
 #include <variant>
 
-#if (defined(__linux__) && !defined(__ANDROID__)) || defined(__APPLE__) || defined(__FreeBSD__) \
-  || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__DragonFly__)
+#if defined(__APPLE__)
+    #include <TargetConditionals.h>
+#endif
+
+#if (defined(__linux__) && !defined(__ANDROID__)) || (defined(__APPLE__) && !TARGET_OS_IPHONE) \
+  || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__DragonFly__)
     #define USE_UNIX_SHM
     #include "shm_unix.h"
 #endif

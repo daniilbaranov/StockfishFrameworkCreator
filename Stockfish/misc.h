@@ -16,6 +16,13 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+  Modified on 2026-11-09 for Stockfish.framework
+  (StockfishFrameworkCreator); see README.md, "Changes from Stockfish 19".
+  sync_cout writes to sync_out(): standard output, or, after
+  set_sync_output(), a buffer passed to a function at the end of each block.
+*/
+
 #ifndef MISC_H_INCLUDED
 #define MISC_H_INCLUDED
 
@@ -188,7 +195,12 @@ enum SyncCout {
 };
 std::ostream& operator<<(std::ostream&, SyncCout);
 
-#define sync_cout std::cout << IO_LOCK
+// The engine output: std::cout, or after set_sync_output() a buffer whose contents
+// go to the handler at the end of each sync_cout block (without the last newline).
+std::ostream& sync_out();
+void          set_sync_output(void (*handler)(const std::string&));
+
+#define sync_cout Stockfish::sync_out() << IO_LOCK
 #define sync_endl std::endl << IO_UNLOCK
 
 void sync_cout_start();

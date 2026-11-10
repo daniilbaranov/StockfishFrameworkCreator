@@ -16,6 +16,13 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+  Modified on 2026-11-09 for Stockfish.framework
+  (StockfishFrameworkCreator); see README.md, "Changes from Stockfish 19".
+  Added sync_out() and set_sync_output(): the engine output can go to a
+  function instead of standard output.
+*/
+
 #include "misc.h"
 
 #include <array>
@@ -434,6 +441,20 @@ void dbg_clear() {
     extremes.fill({});
 }
 
+namespace {
+
+// The output of the current sync_cout block and its handler (set_sync_output)
+std::ostringstream syncOutput;
+void (*syncOutputHandler)(const std::string&) = nullptr;
+
+}
+
+std::ostream& sync_out() {
+    return syncOutputHandler ? static_cast<std::ostream&>(syncOutput) : std::cout;
+}
+
+void set_sync_output(void (*handler)(const std::string&)) { syncOutputHandler = handler; }
+
 // Used to serialize access to std::cout
 // to avoid multiple threads writing at the same time.
 std::ostream& operator<<(std::ostream& os, SyncCout sc) {
@@ -444,13 +465,24 @@ std::ostream& operator<<(std::ostream& os, SyncCout sc) {
         m.lock();
 
     if (sc == IO_UNLOCK)
+    {
+        if (&os == &syncOutput)
+        {
+            std::string block = syncOutput.str();
+            syncOutput.str("");
+            if (!block.empty() && block.back() == '\n')
+                block.pop_back();
+            if (!block.empty())
+                syncOutputHandler(block);
+        }
         m.unlock();
+    }
 
     return os;
 }
 
-void sync_cout_start() { std::cout << IO_LOCK; }
-void sync_cout_end() { std::cout << IO_UNLOCK; }
+void sync_cout_start() { sync_out() << IO_LOCK; }
+void sync_cout_end() { sync_out() << IO_UNLOCK; }
 
 // Hash function based on public domain MurmurHash64A, by Austin Appleby.
 u64 hash_bytes(const char* data, usize size) {

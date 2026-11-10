@@ -1,9 +1,12 @@
 # Stockfish framework for iOS, iPadOS and Mac Catalyst
 
 This repository builds `Stockfish.xcframework`: a modified version of the
-[Stockfish](https://stockfishchess.org) 16 chess engine, packaged as a framework
+[Stockfish](https://stockfishchess.org) 19 chess engine, packaged as a framework
 that an app links and drives through a small C interface. It is the engine
 used in the Chess King apps for iOS.
+
+Branches: `stockfish-19` builds Stockfish 19; `main` keeps the Stockfish 16
+framework (tags `sf_16-ck.1` and `sf_16-ck.2`) with its own README.
 
 ## License
 
@@ -11,11 +14,11 @@ Stockfish is free software distributed under the GNU General Public License
 version 3 or later. The license text is in [Copying.txt](Copying.txt), the
 authors of Stockfish are listed in [AUTHORS](AUTHORS).
 
-- Stockfish (`Stockfish/`): Copyright (C) 2004-2023 The Stockfish developers (see AUTHORS).
+- Stockfish (`Stockfish/`): Copyright (C) 2004-2026 The Stockfish developers (see AUTHORS).
 - C interface (`Stockfish/stockfishEngine.cpp`, `Stockfish/stockfishEngine.hpp`):
   Copyright (C) 2021 Daniil Baranov, GPL version 3 or later.
 - `Stockfish/incbin/`: incbin by Dale Weiler, public domain ([UNLICENCE](Stockfish/incbin/UNLICENCE)).
-- `nn-5af11540bbfe.nnue`: the default neural network of Stockfish 16, see [Neural network](#neural-network).
+- `nn-1a298aa575a0.nnue`: the default neural network of Stockfish 19, see [Neural network](#neural-network).
 
 The framework carries `Copying.txt` and `AUTHORS` inside its bundle, and its
 `Info.plist` has the copyright notice (`NSHumanReadableCopyright`).
@@ -30,40 +33,43 @@ source of that build.
 | `sf_16-ck.1` | `58e4ab0` | Stockfish 16 | 2025-10 |
 | `sf_16-ck.2` | `a5e19c2` | Stockfish 16 | 2026-10 |
 
-`sf_16-ck.1` was built before the license files and notices were added; they
-do not change the engine code. That build also contains the public headers
-`Stockfish.h` and `stockfishEngine.hpp` of the same commit: the project at that
-commit does not mark them public, later commits do.
-
-`sf_16-ck.2` has the same engine code as `sf_16-ck.1`, with `Copying.txt`,
-`AUTHORS` and the copyright notice inside the framework.
+`sf_16-ck.1` and `sf_16-ck.2` are on `main`; its README describes them.
 
 Builds from 18 February 2022 to May 2024 were based on Stockfish 11. Their
 sources are in the history of this repository, commits `9df9aaf` to `be024fd`.
 
-## Changes from Stockfish 16
+## Changes from Stockfish 19
 
-The base is the official tag [`sf_16`](https://github.com/official-stockfish/Stockfish/tree/sf_16)
-(commit `68e1e9b`, 2023-06-24). Commit `849e716` of this repository holds its
-`src/` folder unmodified, so `git diff 849e716 -- Stockfish` shows every change.
-Files not listed below are identical to `sf_16`.
+The base is the official tag [`sf_19`](https://github.com/official-stockfish/Stockfish/tree/sf_19)
+(commit `edb0d9d`, 2026-09-05). Commit `880cd05` of this repository holds its
+`src/` folder unmodified, so `git diff 880cd05 -- Stockfish` shows every change.
+Files not listed below are identical to `sf_19`.
 
-Modified on 2025-10-09 and 2025-10-10:
+Modified on 2026-11-09:
 
-- `main.cpp`: no `main()`. `stockfish_initialize()` runs the Stockfish startup
-  code unless the engine is already running; command-line arguments are not used.
-  `stockfish_cmd()` passes one command to `UCI::cmd()`; after `quit` the engine
-  needs to be initialized again. Engine output goes to a message queue:
+- `main.cpp`: no `main()`. `stockfish_initialize()` creates the engine
+  (`UCIEngine`) unless it is already running; command-line arguments are not
+  used. `stockfish_cmd()` passes one command to `UCIEngine::execute()`; after
+  `quit` the engine needs to be initialized again, which creates a new engine
+  with the default options. Engine output goes to a message queue:
   `engine_message()` adds a message, `getSearchMessage()` takes the oldest one,
   `clearAllMessages()` empties the queue.
-- `uci.cpp`, `uci.h`: new `UCI::cmd()` handles one command per call on a
-  position kept between calls, instead of the `UCI::loop()` read loop (still in
-  the source, not called). The reply to `uci` goes to the message queue;
-  `bench` reports its totals to the queue and prints `bench END`.
-- `search.cpp`: search output (`info`, `bestmove`, perft results) goes to the
-  message queue instead of standard output.
+- `uci.cpp`, `uci.h`: the body of `UCIEngine::loop()` moved to the new
+  `UCIEngine::execute()`, which handles one command per call (`loop()` calls it).
+  `print_info_string()` and `on_bestmove()` write to `sync_out()` instead of
+  `std::cout`. `bench` also reports its totals to the output and prints
+  `bench END`.
+- `misc.cpp`, `misc.h`: `sync_cout` writes to `sync_out()`: standard output, or,
+  after `set_sync_output()`, a buffer whose contents go to a function at the end
+  of each `sync_cout` block. `main.cpp` passes them to the message queue.
+- `shm.h`: no system-wide shared memory on iOS, iPadOS and Mac Catalyst
+  (`TARGET_OS_IPHONE`). The network is kept in the app's own memory (the
+  fallback Stockfish uses where shared memory is not available) instead of POSIX
+  shared memory with files in `/tmp`, a helper thread and an `atexit` handler.
 
-Removed: `Makefile` (the framework is built with the Xcode project).
+Removed: `Makefile` (the framework is built with the Xcode project). The
+`universal/` folder belongs to the Makefile's universal builds; it is kept
+unmodified and not compiled.
 
 Added:
 
@@ -71,38 +77,42 @@ Added:
 - `Stockfish/Stockfish.h`: the umbrella header of the framework.
 - `Stockfish.xcodeproj`, `scripts/build-xcframework.sh`: the build.
 - `PrivacyInfo.xcprivacy`: Apple privacy manifest, copied into the framework.
-- `nn-5af11540bbfe.nnue`: the neural network.
+- `nn-1a298aa575a0.nnue`: the neural network.
 
-The Stockfish 11 based builds had the same kind of changes. Commit `ffd0aab`
-holds Stockfish 11 (tag `sf_11`) unmodified, so `git diff ffd0aab be024fd -- Stockfish`
-shows them.
+The Stockfish 16 and Stockfish 11 based builds had the same kind of changes,
+see the README on `main`.
 
 ## C interface
 
 ```c
 void engine_initialize(void);              // starts the engine and sends "uci"
 void engine_cmd(const char *cmd);          // one UCI command, e.g. "go depth 20"
-const char *engine_getSearchMessage(void); // next output line or NULL
+const char *engine_getSearchMessage(void); // next output message or NULL
 void engine_clearAllMessages(void);
 ```
 
 - There is one engine per process.
 - `go` starts the search on Stockfish's threads and returns at once; other
   commands run synchronously.
-- `isready` and the debugging commands (`d`, `eval`, `compiler`) still write to
-  standard output, not to the queue.
+- All engine output goes to the queue, including `readyok` and the debugging
+  commands (`d`, `eval`, `compiler`). A message may hold several lines (the
+  reply to `uci` is two messages: the engine name and options, then `uciok`).
+  `bench` and `speedtest` print their progress to standard error.
+- Before each search Stockfish 19 sends `info string` lines about the
+  processors, the threads and the network.
 - The string returned by `engine_getSearchMessage()` is valid until the next call.
 
 ## Neural network
 
-`nn-5af11540bbfe.nnue` is the default network of Stockfish 16
-(`EvalFileDefaultName` in `Stockfish/evaluate.h`), from
-<https://tests.stockfishchess.org/api/nn/nn-5af11540bbfe.nnue>. It is embedded
-into the binary at build time with incbin. A network's file name starts with the
-first 12 hex digits of its SHA-256:
+`nn-1a298aa575a0.nnue` (98,511,183 bytes) is the default network of
+Stockfish 19 (`EvalFileDefaultName` in `Stockfish/evaluate.h`), from
+<https://tests.stockfishchess.org/api/nn/nn-1a298aa575a0.nnue>. It is embedded
+into the binary at build time with incbin; the engine keeps about 109 MiB of
+memory for it. A network's file name starts with the first 12 hex digits of
+its SHA-256:
 
 ```
-shasum -a 256 nn-5af11540bbfe.nnue
+shasum -a 256 nn-1a298aa575a0.nnue
 ```
 
 ## Building
@@ -133,6 +143,15 @@ xcodebuild -create-xcframework \
   -framework build/Stockfish-catalyst.xcarchive/Products/Library/Frameworks/Stockfish.framework \
   -output build/Stockfish.xcframework
 ```
+
+Compiler settings, as in the Makefile's `armv8` and `x86-64` builds:
+
+- arm64: `IS_64BIT`, `USE_POPCNT`, `USE_NEON=8`. No dot product instructions
+  (`USE_NEON_DOTPROD`): the framework runs on iOS 13, that is on A9 and later,
+  and the A12 and older chips do not have them.
+- x86_64 (Simulator and Mac Catalyst on Intel Macs): `IS_64BIT`, `USE_SSE2`.
+- Release: `NDEBUG`, `-O3 -funroll-loops`; all configurations:
+  `-fconstexpr-steps=500000000`.
 
 Platforms: iOS 13 and later (arm64), iOS Simulator (arm64, x86_64), Mac Catalyst
 (arm64, x86_64).

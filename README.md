@@ -32,8 +32,12 @@ source of that build.
 |---|---|---|---|
 | `sf_16-ck.1` | `58e4ab0` | Stockfish 16 | 2025-10 |
 | `sf_16-ck.2` | `a5e19c2` | Stockfish 16 | 2026-10 |
+| `sf_19-ck.1` | `6c01545` | Stockfish 19 | 2026-11 |
 
 `sf_16-ck.1` and `sf_16-ck.2` are on `main`; its README describes them.
+
+`sf_19-ck.1` is the first Stockfish 19 build, on `stockfish-19`: the changes
+below.
 
 Builds from 18 February 2022 to May 2024 were based on Stockfish 11. Their
 sources are in the history of this repository, commits `9df9aaf` to `be024fd`.
